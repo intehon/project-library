@@ -1,0 +1,15 @@
+.header-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    justify-content: center;
+    align-items: center;
+}
+
+.header-img {
+    height: 200px;
+}
+.logo-img {
+    height: 200px;
+    position: relative; top: -65px;
+}
