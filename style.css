@@ -20,6 +20,7 @@ span {
     font-size: 16px;
     font-weight: bolder;
     font-style: normal;
+    /* padding-bottom: 5px; */
 }
 
 p {
@@ -40,7 +41,6 @@ button {
 
 .header-container {
     display: flex;
-    /* flex-direction: column; */
     gap: 10px; 
     justify-content: center;
     align-items: center;
@@ -54,7 +54,6 @@ button {
 
 .logo-img {
     height: 150px;
-    /* position: relative; top: -20px; */
 }
 
 .container {
@@ -63,7 +62,6 @@ button {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    /* width: 600px; */
 }
 
 .poke-card {
@@ -76,16 +74,11 @@ button {
 .card {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     padding: 10px;
     margin: 10px;
     border: 2px solid black;
     border-radius: 25px;
-    /* width: 200px; */
-    /* justify-content: center; */
     align-items: center;
-    /* width: 550px; */
-    /* justify-content: space-between; */
     box-shadow: 2px 2px;
 }
 
@@ -94,22 +87,19 @@ button {
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    /* flex-direction: column; */
 }
 
 .text-container {
     width: 200px;
-    /* padding-left: 20px; */
-    /* padding-top: 5px; */
     padding: 5px;
     font-style: italic;
 }
 
 .poke-img {
     width: 150px;
-    border: 1px black solid;
+    /* border: 1px black solid;
     border-radius: 25px;
-    box-shadow: 2px 2px;
+    box-shadow: 2px 2px; */
 }
 
 .list {

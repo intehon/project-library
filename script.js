@@ -2,6 +2,9 @@
 const pokeCard = document.getElementById("pokeCard")
 const favorites = document.getElementById("favorites")
 const filterDropdown = document.getElementById("filterDropdown")
+const sortButtonHp = document.getElementById('sortButtonHp')
+const sortButtonAz = document.getElementById('sortButtonAz')
+const sortButtonTotal = document.getElementById('sortButtonTotal')
 
 // Array of different pokémons as objects
 let pokemons = [
@@ -310,13 +313,39 @@ const filterPokemons = () => {
   }
 }
 
-//Apply the filter when user changes in the drop down menu
-filterDropdown.addEventListener("change", filterPokemons)
 
+//Function to sort Pokémons from highest to lowest HP
+const sortByHp = () => {
+  pokemons.sort(function(a, b) {
+    return b.HP - a.HP
+  })
+  //Update list of Pokémons on page
+  loadPokemons(pokemons)
+}
+
+//Function to sort Pokémons from highest total amount to lowest
+const sortTotalAmount = () => {
+  pokemons.sort(function(a, b) {
+    const totalAmountA = a.HP + a.attack + a.defense + a.speed
+    const totaltAmountB = b.HP + b.attack + b.defense + b.speed
+    return totaltAmountB - totalAmountA
+  })
+  //Update list of Pokémons
+  loadPokemons(pokemons)
+}
+
+//Function to sort Pokémons alphabetically
+const sortAlphabetically = () => {
+  pokemons.sort((a, b) => a.name.localeCompare(b.name))
+  //Update list of Pokémons
+  loadPokemons(pokemons)
+}
 
 //Function to add pokémon to favorites
 const addToFaves = (pokemon) => {
   favePokes.push(JSON.parse(decodeURIComponent(pokemon)))
+  //Alert user that chosen pokémon is added to favorite list
+  alert(`${JSON.parse(decodeURIComponent(pokemon)).name} added to favorite list!`)
   //Update the favorite list
   loadFaves()
 }
@@ -337,6 +366,13 @@ const loadFaves = () => {
     `
   })
 }
+
+//Eventlistener for buttons and drop down menu
+filterDropdown.addEventListener("change", filterPokemons)
+sortButtonHp.addEventListener("click", sortByHp)
+sortButtonTotal.addEventListener("click", sortTotalAmount)
+sortButtonAz.addEventListener("click", sortAlphabetically)
+
 
 //Invoke the loadPokemon function to show the pokémon cards
 loadPokemons(pokemons)

@@ -15,7 +15,6 @@
       />
     </header>
     <div class="container">
-      <h1>List of Pokémons in Pokédex</h1>
       <nav class="navigation" id="navigation">
         <select id="filterDropdown" class="filter-dropdown">
           <option value="all">All types</option>
@@ -28,7 +27,13 @@
           <option value="Normal">Normal</option>
           <option value="Electric">Electric</option>
         </select>
+        <button id="sortButtonHp">Sort from highest to lowest HP</button>
+        <button id="sortButtonAz">Sort from A-Z</button>
+        <button id="sortButtonTotal">
+          Sort highest to lowest total Amount
+        </button>
       </nav>
+      <h1>List of Pokémons in Pokédex</h1>
       <section id="pokeCard" class="poke-card"></section>
       <h1>Your saved favorites</h1>
       <section id="favorites" class="poke-card"></section>
