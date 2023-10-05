@@ -1,10 +1,7 @@
-// // Declare variables to connect to HTML elements
-// const pokeCard = document.getElementById('pokeCard')
-// const favorites = document.getElementById('favorites')
-// const filterDropdown = document.getElementById('filterDropdown')
-
-// //Initialize empty array to store favorite pokémons
-// let favoritePoke = []
+// Declare variables that refer to HTML elements
+const pokeCard = document.getElementById("pokeCard")
+const favorites = document.getElementById("favorites")
+const filterDropdown = document.getElementById("filterDropdown")
 
 // Array of different pokémons as objects
 let pokemons = [
@@ -270,17 +267,12 @@ let pokemons = [
   }
 ]
 
-// Initialize an empty array to store favorite dogs.
-const favePokes = [];
+//Initialize empty array to store favorite pokémons
+const favePokes = []
 
-// Get references to HTML elements using their IDs.
-const pokeCard = document.getElementById("pokeCard");
-const favorites = document.getElementById("favorites");
-const filterDropdown = document.getElementById("filterDropdown");
-
-// Function to load and display the list of dogs.
+// Function to create list, or library, of pokémons and display them
 const loadPokemons = (pokemons) => {
-  pokeCard.innerHTML = '';
+  pokeCard.innerHTML = ''
 
   pokemons.forEach((pokemon) => {
     pokeCard.innerHTML += `
@@ -303,39 +295,36 @@ const loadPokemons = (pokemons) => {
       <button onclick="addToFaves('${encodeURIComponent(JSON.stringify(pokemon))}')">Add to favorites</button>
     </div>  
 </div>
-      `;
-  });
-};
+      `
+  })
+}
 
-// Function to filter and display dogs based on fur color.
+//Function to filter and display pokémons depending on their type
 const filterPokemons = () => {
-  // Get the selected value from the filter dropdown.
-  const value = filterDropdown.value;
-
+  const value = filterDropdown.value
   if (value === "all") {
-    loadPokemons(pokemons);
+    loadPokemons(pokemons)
   } else {
-    // Otherwise, filter dogs based on fur color and load the filtered list.
-    const filteredList = pokemons.filter((pokemon) => pokemon.type === value);
-
-    loadPokemons(filteredList);
+    const filteredList = pokemons.filter((pokemon) => pokemon.type === value)
+    loadPokemons(filteredList)
   }
-};
+}
 
-// Function to add a dog to the list of favorite dogs.
+//Apply the filter when user changes in the drop down menu
+filterDropdown.addEventListener("change", filterPokemons)
+
+
+//Function to add pokémon to favorites
 const addToFaves = (pokemon) => {
-  // Push the dog's name to the favorite dogs array.
-  favePokes.push(JSON.parse(decodeURIComponent(pokemon)));
-  // Update the display of favorite dogs.
-  loadFaves();
-};
+  favePokes.push(JSON.parse(decodeURIComponent(pokemon)))
+  //Update the favorite list
+  loadFaves()
+}
 
-// Function to display the list of favorite dogs.
-
+//Function to create list of favorite pokémons
 const loadFaves = () => {
-  // Clear the favorites element's content.
-  favorites.innerHTML = "";
-  // Iterate through the favorite dogs array and display their names.
+  favorites.innerHTML = ''
+//Iterate through favorite pokémons and display their names and an image
   favePokes.forEach((pokemon) => {
     favorites.innerHTML += `
       <div class="card">
@@ -345,79 +334,9 @@ const loadFaves = () => {
           <img src="${pokemon.image}" alt="${pokemon.name}" class="poke-img"/>
         </div>
       </div>
-    `;
-  });
-};
+    `
+  })
+}
 
-// Apply the filter when the user changes the dropdown selection.
-filterDropdown.addEventListener("change", filterPokemons);
-// Load the initial list of dogs when the page loads.
-loadPokemons(pokemons);
-
-// // Function to create list, or library, of pokémons and display them
-// const generatePokedex = () => {
-//   pokeCard.innerHTML = ''
-//   pokemons.forEach((pokemon) => {
-//     pokeCard.innerHTML += `
-//     <div class="card">
-//         <h3>${pokemon.name}</h3>
-//                 <span>${pokemon.type}</span>
-//         <div class="content-container">
-//           <div class="image-container">
-//             <img src="${pokemon.image}" alt="${pokemon.name}" class="poke-img"/>
-//           </div>
-//           <div class="text-container">
-//             <p>${pokemon.description}</p>
-//             <ul class="list">
-//               <li>HP: ${pokemon.HP}</li>
-//               <li>Attack: ${pokemon.attack}</li>
-//               <li>Defense: ${pokemon.defense}</li>
-//               <li>Speed: ${pokemon.speed}</li>
-//             </ul>
-//           </div>
-//           <button onclick="addToFav('${pokemon.name}')">Add to favorites</button>
-//         </div>  
-//     </div>
-//      ` 
-//   })
-// }
-
-// //Function to filter and display pokémons depending on their type
-// const filterPokemons = () => {
-//   const value = filterDropdown.value
-//   if (value === "all") {
-//     generatePokedex(pokemons)
-//   } else {
-//     const filteredList = pokemons.filter((pokemon) => pokemon.type === value)
-//     generatePokedex(filteredList)
-//   }
-// }
-
-// //Apply the filter when user changes in the drop down menu
-// filterDropdown.addEventListener("click", filterPokemons)
-
-
-// //Function to add pokémon to favorites
-// const addToFav = (pokemon) => {
-//   //add pokémon to list w. push method
-//   favoritePoke.push(pokemon)
-//   loadFav()
-// }
-
-// //Function to create list of favorite pokémons
-// const loadFav = () => {
-//  favorites.innerHTML = ''
-//  favoritePoke.forEach((pokemon) => {
-//   favorites.innerHTML += `
-//   <div class="card">
-//     <h3>${pokemon.name}</h3>
-//     <div class="image-container">
-//       <img src="${pokemon.image}" alt="${pokemon.name}" class="poke-img"/>
-//     </div>
-//   </div>
-//   `
-//  })
-// }
-
-// //Invoke generatePokedex function to show the pokémon cards
-// generatePokedex()
+//Invoke the loadPokemon function to show the pokémon cards
+loadPokemons(pokemons)
