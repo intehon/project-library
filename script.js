@@ -37,7 +37,7 @@ let pokemons = [
   },
   {
     name: "Charmander",
-    type: "Fire",
+    type: ["Fire"],
     attack: 52,
     defense: 43,
     HP: 39,
@@ -47,7 +47,7 @@ let pokemons = [
   },
   {
     name: "Charmeleon",
-    type: "Fire",
+    type: ["Fire"],
     attack: 64,
     defense: 58,
     HP: 58,
@@ -67,7 +67,7 @@ let pokemons = [
   },
   {
     name: "Squirtle",
-    type: "Water",
+    type: ["Water"],
     attack: 48,
     defense: 65,
     HP: 44,
@@ -77,7 +77,7 @@ let pokemons = [
   },
   {
     name: "Wartortle",
-    type: "Water",
+    type: ["Water"],
     attack: 63,
     defense: 80,
     HP: 59,
@@ -87,7 +87,7 @@ let pokemons = [
   },
   {
     name: "Blastoise",
-    type: "Water",
+    type: ["Water"],
     attack: 83,
     defense: 100,
     HP: 79,
@@ -97,7 +97,7 @@ let pokemons = [
   },
   {
     name: "Caterpie",
-    type: "Bug",
+    type: ["Bug"],
     attack: 30,
     defense: 35,
     HP: 45,
@@ -107,7 +107,7 @@ let pokemons = [
   },
   {
     name: "Metapod",
-    type: "Bug",
+    type: ["Bug"],
     attack: 20,
     defense: 55,
     HP: 50,
@@ -187,7 +187,7 @@ let pokemons = [
   },
   {
     name: "Rattata",
-    type: "Normal",
+    type: ["Normal"],
     attack: 56,
     defense: 35,
     HP: 30,
@@ -197,7 +197,7 @@ let pokemons = [
   },
   {
     name: "Raticate",
-    type: "Normal", 
+    type: ["Normal"], 
     attack: 81,
     defense: 60,
     HP: 55,
@@ -227,7 +227,7 @@ let pokemons = [
   },
   {
     name: "Ekans",
-    type: "Poison",
+    type: ["Poison"],
     attack: 60,
     defense: 44,
     HP: 35,
@@ -237,7 +237,7 @@ let pokemons = [
   },
   {
     name: "Arbok",
-    type: "Poison",
+    type: ["Poison"],
     attack: 95,
     defense: 69,
     HP: 60,
@@ -247,7 +247,7 @@ let pokemons = [
   },
   {
     name: "Pikachu",
-    type: "Electric",
+    type: ["Electric"],
     attack: 55,
     defense: 40,
     HP: 35,
@@ -257,7 +257,7 @@ let pokemons = [
   },
   {
     name: "Raichu",
-    type: "Electric",
+    type: ["Electric"],
     attack: 90,
     defense: 55,
     HP: 60,
@@ -305,7 +305,7 @@ const filterPokemons = () => {
   if (value === "all") {
     loadPokemons(pokemons)
   } else {
-    const filteredList = pokemons.filter((pokemon) => pokemon.type === value)
+    const filteredList = pokemons.filter((pokemon) => pokemon.type[0] === value || pokemon.type[1] === value)
     loadPokemons(filteredList)
   }
 }
