@@ -272,12 +272,12 @@ const generatePokedex = () => {
     pokeCard.innerHTML += `
     <div class="card">
         <h3>${pokemon.name}</h3>
+        <span>${pokemon.type}</span>
         <div class="content-container">
           <div class="image-container">
             <img src="${pokemon.image}" alt="${pokemon.name}" class="poke-img"/>
           </div>
           <div class="text-container">
-            <span>${pokemon.type}</span>
             <p>${pokemon.description}</p>
             <ul class="list">
               <li>HP: ${pokemon.HP}</li>
