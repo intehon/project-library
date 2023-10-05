@@ -1,15 +1,86 @@
+* {
+    margin: 0;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    font-style: italic;
+    margin: 20px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+span {
+    font-weight: bolder;
+    font-style: normal;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .header-container {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 10px; 
     justify-content: center;
     align-items: center;
 }
 
 .header-img {
-    height: 200px;
+    position: relative; top: 20px;
+    height: 110px;
+    padding: 30px;
 }
 .logo-img {
     height: 200px;
-    position: relative; top: -65px;
+    /* position: relative; top: -20px; */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 600px; */
+}
+
+/* .poke-card {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+} */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.content-container {
+    display: flex;
+    padding: 10px;
+    /* flex-direction: column; */
+}
+
+.text-container {
+    width: 300px;
+    padding: 20px;
+    font-style: italic;
+}
+
+.poke-img {
+    width: 300px;
+    border: 1px black solid;
+    border-radius: 25px;
+}
+
+.list {
+    padding: 20px;
+    font-style: normal;
 }
