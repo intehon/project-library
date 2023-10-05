@@ -4,6 +4,7 @@
 
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: linear-gradient(to right, rgba(25, 0, 255, 0), rgb(255, 114, 114))
 }
 
 h1 {
