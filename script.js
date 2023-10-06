@@ -272,11 +272,13 @@ let pokemons = [
 
 //Initialize empty array to store favorite pokémons
 const favePokes = []
+//Initialize variable to keep track of the alphabetic sorting
+let isAscending = true
 
 // Function to create list, or library, of pokémons and display them
-const loadPokemons = (pokemons) => {
+const loadPokemons = (pokemons) => {  
   pokeCard.innerHTML = ''
-
+//Structure of the Pokémon library
   pokemons.forEach((pokemon) => {
     pokeCard.innerHTML += `
     <div class="card">
@@ -314,32 +316,69 @@ const filterPokemons = () => {
 }
 
 
-//Function to sort Pokémons from highest to lowest HP
+//Function to sort pokémons from highest to lowest HP
 const sortByHp = () => {
   pokemons.sort(function(a, b) {
     return b.HP - a.HP
   })
-  //Update list of Pokémons on page
+  //Update list of pokémons on page
   loadPokemons(pokemons)
 }
 
-//Function to sort Pokémons from highest total amount to lowest
+//Function to sort pokémons from highest total amount to lowest
 const sortTotalAmount = () => {
   pokemons.sort(function(a, b) {
     const totalAmountA = a.HP + a.attack + a.defense + a.speed
     const totaltAmountB = b.HP + b.attack + b.defense + b.speed
     return totaltAmountB - totalAmountA
   })
-  //Update list of Pokémons
+  //Update list of pokémons
   loadPokemons(pokemons)
 }
 
-//Function to sort Pokémons alphabetically
+//Function to toggle sorting order alphabetically when button is clicked
+const toggleSortingOrder = () => {
+  //Change sorting order from ascending to descending
+  isAscending = !isAscending
+  sortAlphabetically()
+}
+
+// Function to sort pokémons
 const sortAlphabetically = () => {
-  pokemons.sort((a, b) => a.name.localeCompare(b.name))
-  //Update list of Pokémons
+  //Use isAscending to decide sorting order
+  if (isAscending) {
+    pokemons.sort((a, b) => a.name.localeCompare(b.name))
+  } else {
+    pokemons.sort((a, b) => b.name.localeCompare(a.name))
+  }
+  //Update list of pokémons
   loadPokemons(pokemons)
 }
+
+// const sortAlphabetically = () => {
+//   pokemons.sort((a, b) => {
+//     const nameA = a.name.toLowerCase()
+//     const nameB = b.name.toLowerCase()
+//     if (nameA < nameB) return -1
+//     if (nameA > nameB) return 1
+//     return 0
+//   })
+//   // Update list of Pokémons
+//   loadPokemons(pokemons)
+// }
+
+//Function to sort Pokémon alphabetically reversed
+// const sortAlphabeticallyReversed = () => {
+//   pokemons.sort((a, b) => {
+//     const nameA = a.name.toLowerCase()
+//     const nameB = b.name.toLowerCase()
+//     if (nameA > nameB) return -1
+//     if (nameA < nameB) return 1
+//     return 0
+//   })
+//   // Update list of Pokémons
+//   loadPokemons(pokemons)
+// }
 
 //Function to add pokémon to favorites
 const addToFaves = (pokemon) => {
@@ -371,8 +410,8 @@ const loadFaves = () => {
 filterDropdown.addEventListener("change", filterPokemons)
 sortButtonHp.addEventListener("click", sortByHp)
 sortButtonTotal.addEventListener("click", sortTotalAmount)
-sortButtonAz.addEventListener("click", sortAlphabetically)
+sortButtonAz.addEventListener("click", toggleSortingOrder)
 
 
 //Invoke the loadPokemon function to show the pokémon cards
-loadPokemons(pokemons)
+loadPokemons(pokemons)  
