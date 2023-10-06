@@ -357,27 +357,26 @@ const loadPokemons = (pokemons) => {
   })
 }
 
-//Function to filter and display pokémons depending on their type
-const filterPokemonType = () => {
-  const value = filterTypeDropdown.value
-  if (value === "all") {
-    loadPokemons(pokemons)
-  } else {
-    const filteredTypeList = pokemons.filter((pokemon) => pokemon.type[0] === value || pokemon.type[1] === value)
-    loadPokemons(filteredTypeList)
+//Function to filter pokémons based on both type- and category dropdown
+const filterPokemon = () => {
+  const typeValue = filterTypeDropdown.value
+  const categoryValue = filterCategoryDropdown.value
+
+  //Check if both filters are set to "all"
+  if (typeValue === 'all' && categoryValue === 'all') {
+    loadPokemons(pokemon)
+    return
   }
+  //Filter pokémons based on type and category
+  const filteredList = pokemons.filter((pokemon) => {
+    const matchesType = typeValue === 'all' || pokemon.type.includes(typeValue)
+    const matchesCategory = categoryValue === 'all' || pokemon.category.includes(categoryValue)
+    return matchesType && matchesCategory
+  })
+
+  loadPokemons(filteredList)
 }
 
-//Function to filter and display pokémons depending on their category
-const filterPokemonCategory = () => {
-  const value = filterCategoryDropdown.value
-  if (value === "all") {
-    loadPokemons(pokemons)
-  } else {
-    const filteredCategoryList = pokemons.filter((pokemon) => pokemon.category === value || pokemon.category.includes(value))
-    loadPokemons(filteredCategoryList)
-  }
-} 
 
 //Function to toggle sorting order when button is clicked
 const toggleSortingOrderHp = () => {
@@ -507,8 +506,8 @@ const searchPokemon = () => {
 }
 
 //Eventlistener for buttons and drop down menu
-filterTypeDropdown.addEventListener("change", filterPokemonType)
-filterCategoryDropdown.addEventListener("change", filterPokemonCategory)
+filterTypeDropdown.addEventListener("change", filterPokemon)
+filterCategoryDropdown.addEventListener("change", filterPokemon)
 sortButtonHp.addEventListener("click", toggleSortingOrderHp)
 sortButtonTotal.addEventListener("click", toggleSortingOrderTotal)
 sortButtonAz.addEventListener("click", toggleSortingOrder)
