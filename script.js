@@ -1,16 +1,20 @@
 // Declare variables that refer to HTML elements
 const pokeCard = document.getElementById("pokeCard")
 const favorites = document.getElementById("favorites")
-const filterDropdown = document.getElementById("filterDropdown")
+const filterTypeDropdown = document.getElementById("filterTypeDropdown")
+const filterCategoryDropdown = document.getElementById("filterCategoryDropdown")
 const sortButtonHp = document.getElementById('sortButtonHp')
 const sortButtonAz = document.getElementById('sortButtonAz')
 const sortButtonTotal = document.getElementById('sortButtonTotal')
+const showFavoritesButton = document.getElementById('showFavoritesButton')
+// let searchInput = document.getElementById('searchInput').value.toLowerCase()
 
 // Array of different pokémons as objects
 let pokemons = [
   {
     name: "Bulbasaur",
     type: ["Grass", "Poison"],
+    category: "Seed",
     attack: 49,
     defense: 49,
     HP: 45,
@@ -21,6 +25,7 @@ let pokemons = [
   {
     name: "Ivysaur",
     type: ["Grass", "Poison"],
+    category: "Seed",
     attack: 62,
     defense: 63, 
     HP: 60,
@@ -31,6 +36,7 @@ let pokemons = [
   {
     name: "Venusaur",
     type: ["Grass", "Poison"],
+    category: "Seed",
     attack: 82,
     defense: 83,
     HP: 80,
@@ -41,6 +47,7 @@ let pokemons = [
   {
     name: "Charmander",
     type: ["Fire"],
+    category: "Lizard",
     attack: 52,
     defense: 43,
     HP: 39,
@@ -51,6 +58,7 @@ let pokemons = [
   {
     name: "Charmeleon",
     type: ["Fire"],
+    category: "Flame",
     attack: 64,
     defense: 58,
     HP: 58,
@@ -61,6 +69,7 @@ let pokemons = [
   {
     name: "Charizard",
     type: ["Fire", "Flying"],
+    category: "Flame",
     attack: 84,
     defense: 78,
     HP: 78,
@@ -71,6 +80,7 @@ let pokemons = [
   {
     name: "Squirtle",
     type: ["Water"],
+    category: "Tiny Turtle",
     attack: 48,
     defense: 65,
     HP: 44,
@@ -81,6 +91,7 @@ let pokemons = [
   {
     name: "Wartortle",
     type: ["Water"],
+    category: "Turtle",
     attack: 63,
     defense: 80,
     HP: 59,
@@ -91,6 +102,7 @@ let pokemons = [
   {
     name: "Blastoise",
     type: ["Water"],
+    category: "Shellfish",
     attack: 83,
     defense: 100,
     HP: 79,
@@ -101,6 +113,7 @@ let pokemons = [
   {
     name: "Caterpie",
     type: ["Bug"],
+    category: "Worm",
     attack: 30,
     defense: 35,
     HP: 45,
@@ -111,6 +124,7 @@ let pokemons = [
   {
     name: "Metapod",
     type: ["Bug"],
+    category: "Cocoon",
     attack: 20,
     defense: 55,
     HP: 50,
@@ -121,6 +135,7 @@ let pokemons = [
   {
     name: "Butterfree",
     type: ["Bug", "Flying"],
+    category: "Butterfly",
     attack: 45,
     defense: 50,
     HP: 60,
@@ -131,6 +146,7 @@ let pokemons = [
   {
     name: "Weedle",
     type: ["Bug", "Poison"],
+    category: "Hairy Bug",
     attack: 35,
     defense: 30,
     HP: 40,
@@ -141,6 +157,7 @@ let pokemons = [
   {
     name: "Kakuna",
     type: ["Bug", "Poison"],
+    category: "Cocoon",
     attack: 25,
     defense: 50,
     HP: 45,
@@ -151,6 +168,7 @@ let pokemons = [
   {
     name: "Beedrill",
     type: ["Bug", "Poison"],
+    category: "Poison Bee",
     attack: 90,
     defense: 40,
     HP: 65,
@@ -161,6 +179,7 @@ let pokemons = [
   {
     name: "Pidgey",
     type: ["Normal", "Flying"],
+    category: "Tiny Bird",
     attack: 45,
     defense: 40,
     HP: 40,
@@ -171,6 +190,7 @@ let pokemons = [
   {
     name: "Pidgeotto",
     type: ["Normal", "Flying"],
+    category: "Bird",
     attack: 60,
     defense: 55,
     HP: 63,
@@ -181,6 +201,7 @@ let pokemons = [
   {
     name: "Pidgeot",
     type: ["Normal", "Flying"],
+    category: "Bird",
     attack: 80,
     defense: 75,
     HP: 83,
@@ -191,6 +212,7 @@ let pokemons = [
   {
     name: "Rattata",
     type: ["Normal"],
+    category: "Mouse",
     attack: 56,
     defense: 35,
     HP: 30,
@@ -201,6 +223,7 @@ let pokemons = [
   {
     name: "Raticate",
     type: ["Normal"], 
+    category: "Mouse",
     attack: 81,
     defense: 60,
     HP: 55,
@@ -211,6 +234,7 @@ let pokemons = [
   {
     name: "Spearow",
     type: ["Normal", "Flying"],
+    category: "Tiny Bird",
     attack: 60,
     defense: 30,
     HP: 40,
@@ -221,6 +245,7 @@ let pokemons = [
   {
     name: "Fearow",
     type: ["Normal", "Flying"],
+    category: "Beak",
     attack: 90,
     defense: 65,
     HP: 65,
@@ -231,6 +256,7 @@ let pokemons = [
   {
     name: "Ekans",
     type: ["Poison"],
+    category: "Snake",
     attack: 60,
     defense: 44,
     HP: 35,
@@ -241,7 +267,8 @@ let pokemons = [
   {
     name: "Arbok",
     type: ["Poison"],
-    attack: 95,
+    category: "Cobra",
+    attack: 95, 
     defense: 69,
     HP: 60,
     speed: 80,
@@ -251,6 +278,7 @@ let pokemons = [
   {
     name: "Pikachu",
     type: ["Electric"],
+    category: "Mouse",
     attack: 55,
     defense: 40,
     HP: 35,
@@ -261,6 +289,7 @@ let pokemons = [
   {
     name: "Raichu",
     type: ["Electric"],
+    category: "Mouse",
     attack: 90,
     defense: 55,
     HP: 60,
@@ -278,6 +307,7 @@ let isAscending = true
 // Function to create list, or library, of pokémons and display them
 const loadPokemons = (pokemons) => {  
   pokeCard.innerHTML = ''
+  favorites.innerHTML = ''
 //Structure of the Pokémon library
   pokemons.forEach((pokemon) => {
     pokeCard.innerHTML += `
@@ -289,6 +319,7 @@ const loadPokemons = (pokemons) => {
         <img src="${pokemon.image}" alt="${pokemon.name}" class="poke-img"/>
       </div>
       <div class="text-container">
+      <span>Category: ${pokemon.category}</span>
         <p>${pokemon.description}</p>
         <ul class="list">
           <li>HP: ${pokemon.HP}</li>
@@ -297,7 +328,7 @@ const loadPokemons = (pokemons) => {
           <li>Speed: ${pokemon.speed}</li>
         </ul>
       </div>
-      <button onclick="addToFaves('${encodeURIComponent(JSON.stringify(pokemon))}')">Add to favorites</button>
+      <button onclick="addToFavorites('${encodeURIComponent(JSON.stringify(pokemon))}')">Add to favorites</button>
     </div>  
 </div>
       `
@@ -305,15 +336,26 @@ const loadPokemons = (pokemons) => {
 }
 
 //Function to filter and display pokémons depending on their type
-const filterPokemons = () => {
-  const value = filterDropdown.value
+const filterPokemonType = () => {
+  const value = filterTypeDropdown.value
   if (value === "all") {
     loadPokemons(pokemons)
   } else {
-    const filteredList = pokemons.filter((pokemon) => pokemon.type[0] === value || pokemon.type[1] === value)
-    loadPokemons(filteredList)
+    const filteredTypeList = pokemons.filter((pokemon) => pokemon.type[0] === value || pokemon.type[1] === value)
+    loadPokemons(filteredTypeList)
   }
 }
+
+//Function to filter and display pokémons depending on their category
+const filterPokemonCategory = () => {
+  const value = filterCategoryDropdown.value
+  if (value === "all") {
+    loadPokemons(pokemons)
+  } else {
+    const filteredCategoryList = pokemons.filter((pokemon) => pokemon.category === value || pokemon.category.includes(value))
+    loadPokemons(filteredCategoryList)
+  }
+} 
 
 //Function to toggle sorting order when button is clicked
 const toggleSortingOrderHp = () => {
@@ -382,42 +424,17 @@ const sortAlphabetically = () => {
   loadPokemons(pokemons)
 }
 
-// const sortAlphabetically = () => {
-//   pokemons.sort((a, b) => {
-//     const nameA = a.name.toLowerCase()
-//     const nameB = b.name.toLowerCase()
-//     if (nameA < nameB) return -1
-//     if (nameA > nameB) return 1
-//     return 0
-//   })
-//   // Update list of Pokémons
-//   loadPokemons(pokemons)
-// }
-
-//Function to sort Pokémon alphabetically reversed
-// const sortAlphabeticallyReversed = () => {
-//   pokemons.sort((a, b) => {
-//     const nameA = a.name.toLowerCase()
-//     const nameB = b.name.toLowerCase()
-//     if (nameA > nameB) return -1
-//     if (nameA < nameB) return 1
-//     return 0
-//   })
-//   // Update list of Pokémons
-//   loadPokemons(pokemons)
-// }
-
 //Function to add pokémon to favorites
-const addToFaves = (pokemon) => {
+const addToFavorites = (pokemon) => {
   favePokes.push(JSON.parse(decodeURIComponent(pokemon)))
   //Alert user that chosen pokémon is added to favorite list
   alert(`${JSON.parse(decodeURIComponent(pokemon)).name} added to favorite list!`)
   //Update the favorite list
-  loadFaves()
+  loadFavorites()
 }
 
 //Function to create list of favorite pokémons
-const loadFaves = () => {
+const loadFavorites = () => {
   favorites.innerHTML = ''
 //Iterate through favorite pokémons and display their names and an image
   favePokes.forEach((pokemon) => {
@@ -433,11 +450,28 @@ const loadFaves = () => {
   })
 }
 
+const showFavorites = () => {
+  pokeCard.innerHTML = ''
+  loadFavorites()
+}
+
+//Function to search for specific Pokémon
+const searchPokemon = () => {
+  const searchInput = document.getElementById("searchInput").value.toLowerCase()
+  const searchResult = pokemons.filter((pokemon) => {
+    return pokemon.name.toLowerCase().includes(searchInput)
+  })
+  loadPokemons(searchResult)
+}
+
 //Eventlistener for buttons and drop down menu
-filterDropdown.addEventListener("change", filterPokemons)
+filterTypeDropdown.addEventListener("change", filterPokemonType)
+filterCategoryDropdown.addEventListener("change", filterPokemonCategory)
 sortButtonHp.addEventListener("click", toggleSortingOrderHp)
 sortButtonTotal.addEventListener("click", toggleSortingOrderTotal)
 sortButtonAz.addEventListener("click", toggleSortingOrder)
+searchInput.addEventListener("input", searchPokemon)
+showFavoritesButton.addEventListener('click', showFavorites)
 
 
 //Invoke the loadPokemon function to show the pokémon cards

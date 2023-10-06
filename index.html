@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/cc56e03ff0.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Pokédex</title>
   </head>
   <body>
@@ -16,7 +20,7 @@
     </header>
     <div class="container">
       <nav class="navigation" id="navigation">
-        <select id="filterDropdown" class="filter-dropdown">
+        <select id="filterTypeDropdown" class="filter-dropdown">
           <option value="all">All types</option>
           <option value="Grass">Grass</option>
           <option value="Poison">Poison</option>
@@ -27,14 +31,42 @@
           <option value="Normal">Normal</option>
           <option value="Electric">Electric</option>
         </select>
+        <select id="filterCategoryDropdown" class="filter-dropdown">
+          <option value="all">All categories</option>
+          <option value="Seed">Seed</option>
+          <option value="Lizard">Lizard</option>
+          <option value="Flame">Flame</option>
+          <option value="Turtle">Turtle</option>
+          <option value="Shellfish">Shellfish</option>
+          <option value="Worm">Worm</option>
+          <option value="Cocoon">Cocoon</option>
+          <option value="Bug">Bug</option>
+          <option value="Butterfly">Butterfly</option>
+          <option value="Bee">Bee</option>
+          <option value="Bird">Bird</option>
+          <option value="Mouse">Mouse</option>
+          <option value="Beak">Beak</option>
+          <option value="Snake">Snake</option>
+          <option value="Cobra">Cobra</option>
+        </select>
         <button id="sortButtonHp">Sort by HP</button>
         <button id="sortButtonTotal">Sort by total amount</button>
         <button id="sortButtonAz">Sort alphabetically</button>
+        <button id="showFavoritesButton">
+          Your favorites <i class="fa-solid fa-heart"></i>
+        </button>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-bar"
+          placeholder="Search for specific Pokémon..."
+        />
       </nav>
-      <h1>List of Pokémons in Pokédex</h1>
+      <h1>Pokédex</h1>
       <section id="pokeCard" class="poke-card"></section>
-      <h1>Your saved favorites</h1>
-      <section id="favorites" class="poke-card"></section>
+      <section id="favorites" class="poke-card">
+        <h1>Your saved favorites <i class="fa-solid fa-heart"></i></h1>
+      </section>
     </div>
     <script src="script.js"></script>
   </body>

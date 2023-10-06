@@ -32,12 +32,34 @@ li {
 }
 
 button {
-
+    height: 30px;
+    padding: 5px;
+    border-radius: 25px;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .filter-dropdown {
-  
+    height: 30px;
+    padding: 5px;
+    /* width: 120px; */
+    border-radius: 25px;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.search-bar {
+    height: 30px;
+    width: 200px;
+    border-radius: 25px;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.favorites {
+    display: none;
+  }
+
 
 .header-container {
     display: flex;
