@@ -32,11 +32,11 @@ li {
 }
 
 button {
-    background-image: linear-gradient(to right, rgba(25, 0, 255, 0), rgb(255, 114, 114))
+
 }
 
 .filter-dropdown {
-    background-image: linear-gradient(to right, rgba(25, 0, 255, 0), rgb(255, 114, 114))
+  
 }
 
 .header-container {
@@ -47,13 +47,8 @@ button {
 }
 
 .header-img {
-    position: relative; top: 20px;
-    height: 90px;
-    padding: 30px;
-}
-
-.logo-img {
     height: 150px;
+    margin-bottom: 20px;
 }
 
 .container {

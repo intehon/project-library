@@ -315,23 +315,50 @@ const filterPokemons = () => {
   }
 }
 
+//Function to toggle sorting order when button is clicked
+const toggleSortingOrderHp = () => {
+  //Change sorting order from ascending to descending
+  isAscending = !isAscending
+  sortByHp()
+}
 
 //Function to sort pokémons from highest to lowest HP
 const sortByHp = () => {
+  if (isAscending) {
+    pokemons.sort(function(a, b) {
+      return a.HP - b.HP
+    })
+} else {
   pokemons.sort(function(a, b) {
     return b.HP - a.HP
   })
+}
   //Update list of pokémons on page
   loadPokemons(pokemons)
 }
 
+//Function to toggle sorting order when button is clicked
+const toggleSortingOrderTotal = () => {
+  //Change sorting order from ascending to descending
+  isAscending = !isAscending
+  sortTotalAmount()
+}
+
 //Function to sort pokémons from highest total amount to lowest
 const sortTotalAmount = () => {
-  pokemons.sort(function(a, b) {
-    const totalAmountA = a.HP + a.attack + a.defense + a.speed
-    const totaltAmountB = b.HP + b.attack + b.defense + b.speed
-    return totaltAmountB - totalAmountA
-  })
+  if (isAscending) {
+    pokemons.sort(function(a, b) {
+      const totalAmountA = a.HP + a.attack + a.defense + a.speed
+      const totaltAmountB = b.HP + b.attack + b.defense + b.speed
+      return totalAmountA - totaltAmountB
+    }) 
+} else {
+    pokemons.sort(function(a, b) {
+      const totalAmountA = a.HP + a.attack + a.defense + a.speed
+      const totaltAmountB = b.HP + b.attack + b.defense + b.speed
+      return totaltAmountB - totalAmountA
+    }) 
+}
   //Update list of pokémons
   loadPokemons(pokemons)
 }
@@ -347,9 +374,9 @@ const toggleSortingOrder = () => {
 const sortAlphabetically = () => {
   //Use isAscending to decide sorting order
   if (isAscending) {
-    pokemons.sort((a, b) => a.name.localeCompare(b.name))
-  } else {
     pokemons.sort((a, b) => b.name.localeCompare(a.name))
+  } else {
+    pokemons.sort((a, b) => a.name.localeCompare(b.name))
   }
   //Update list of pokémons
   loadPokemons(pokemons)
@@ -408,8 +435,8 @@ const loadFaves = () => {
 
 //Eventlistener for buttons and drop down menu
 filterDropdown.addEventListener("change", filterPokemons)
-sortButtonHp.addEventListener("click", sortByHp)
-sortButtonTotal.addEventListener("click", sortTotalAmount)
+sortButtonHp.addEventListener("click", toggleSortingOrderHp)
+sortButtonTotal.addEventListener("click", toggleSortingOrderTotal)
 sortButtonAz.addEventListener("click", toggleSortingOrder)
 
 
