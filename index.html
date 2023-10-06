@@ -30,6 +30,7 @@
           <option value="Bug">Bug</option>
           <option value="Normal">Normal</option>
           <option value="Electric">Electric</option>
+          <option value="Ground">Ground</option>
         </select>
         <select id="filterCategoryDropdown" class="filter-dropdown">
           <option value="all">All categories</option>
@@ -52,9 +53,7 @@
         <button id="sortButtonHp">Sort by HP</button>
         <button id="sortButtonTotal">Sort by total amount</button>
         <button id="sortButtonAz">Sort alphabetically</button>
-        <button id="showFavoritesButton">
-          Your favorites <i class="fa-solid fa-heart"></i>
-        </button>
+        <button id="showFavoritesButton">Show favorites</button>
         <input
           type="text"
           id="searchInput"
@@ -62,11 +61,9 @@
           placeholder="Search for specific Pokémon..."
         />
       </nav>
-      <h1>Pokédex</h1>
+      <h1 id="listTitle">Pokédex</h1>
       <section id="pokeCard" class="poke-card"></section>
-      <section id="favorites" class="poke-card">
-        <h1>Your saved favorites <i class="fa-solid fa-heart"></i></h1>
-      </section>
+      <section id="favorites" class="poke-card"></section>
     </div>
     <script src="script.js"></script>
   </body>

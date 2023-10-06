@@ -7,7 +7,7 @@ const sortButtonHp = document.getElementById('sortButtonHp')
 const sortButtonAz = document.getElementById('sortButtonAz')
 const sortButtonTotal = document.getElementById('sortButtonTotal')
 const showFavoritesButton = document.getElementById('showFavoritesButton')
-// let searchInput = document.getElementById('searchInput').value.toLowerCase()
+const listTitle = document.getElementById('listTitle')
 
 // Array of different pokémons as objects
 let pokemons = [
@@ -296,7 +296,29 @@ let pokemons = [
     speed: 110,
     description: "Its tail discharges electricity into the ground, protecting it from getting shocked.",
     image: "./pokemon-images/raichu.png"
-  }
+  },
+  {
+    name: "Sandshrew",
+    type: ["Ground"],
+    category: "Mouse",
+    attack: 75,
+    defense: 85,
+    HP: 50,
+    speed: 40,
+    description: "It loves to bathe in the grit of dry, sandy areas. By sand bathing, the Pokémon rids itself of dirt and moisture clinging to its body.",
+    image: "./pokemon-images/sandshrew.png"
+  },
+  {
+    name: "Sandslash",
+    type: ["Ground"],
+    category: "Mouse",
+    attack: 100,
+    defense: 110,
+    HP: 75,
+    speed: 65,
+    description: "The drier the area Sandslash lives in, the harder and smoother the Pokémon’s spikes will feel when touched.",
+    image: "./pokemon-images/sandslash.png"
+  },
 ]
 
 //Initialize empty array to store favorite pokémons
@@ -426,16 +448,23 @@ const sortAlphabetically = () => {
 
 //Function to add pokémon to favorites
 const addToFavorites = (pokemon) => {
-  favePokes.push(JSON.parse(decodeURIComponent(pokemon)))
+
+  const parsedPokemon = JSON.parse(decodeURIComponent(pokemon))
+  //Check to see if pokémon is already in the favorites list
+  if (favePokes.some((favorite) => favorite.name === parsedPokemon.name)) {
+    alert(`${parsedPokemon.name} is already added to the list!`)
+  } else {
+  favePokes.push(parsedPokemon)
   //Alert user that chosen pokémon is added to favorite list
-  alert(`${JSON.parse(decodeURIComponent(pokemon)).name} added to favorite list!`)
-  //Update the favorite list
-  loadFavorites()
+  alert(`${parsedPokemon.name} added to favorite list!`)
+  }
 }
+
 
 //Function to create list of favorite pokémons
 const loadFavorites = () => {
-  favorites.innerHTML = ''
+  pokeCard.innerHTML = ''
+
 //Iterate through favorite pokémons and display their names and an image
   favePokes.forEach((pokemon) => {
     favorites.innerHTML += `
@@ -450,10 +479,23 @@ const loadFavorites = () => {
   })
 }
 
-const showFavorites = () => {
-  pokeCard.innerHTML = ''
-  loadFavorites()
-}
+  //Function to toggle between favorites and all pokemons
+  const toggleFavorites = () => {
+    pokeCard.classList.toggle('favorites')
+    //Change button text depending if you're showing favorites or not
+    const buttonText = pokeCard.classList.contains('favorites') ? 'Show all Pokémons' : 'Show favorites'
+    showFavoritesButton.textContent = buttonText
+
+    if (pokeCard.classList.contains('favorites')) {
+      loadFavorites()
+      //Change title of list to "Your favorites"
+      listTitle.innerHTML = 'Your favorite Pokémons <i class="fa-regular fa-heart"></i>' 
+    } else {
+      loadPokemons(pokemons)
+      //Change title of list to "Pokédex"
+      listTitle.innerHTML = 'Pokédex' 
+    }
+  }
 
 //Function to search for specific Pokémon
 const searchPokemon = () => {
@@ -471,7 +513,7 @@ sortButtonHp.addEventListener("click", toggleSortingOrderHp)
 sortButtonTotal.addEventListener("click", toggleSortingOrderTotal)
 sortButtonAz.addEventListener("click", toggleSortingOrder)
 searchInput.addEventListener("input", searchPokemon)
-showFavoritesButton.addEventListener('click', showFavorites)
+showFavoritesButton.addEventListener('click', toggleFavorites)
 
 
 //Invoke the loadPokemon function to show the pokémon cards
